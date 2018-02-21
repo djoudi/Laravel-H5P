@@ -4,7 +4,7 @@
 ## Installation
 
 ```bash
-composer require djoudi/laravel-h5p
+composer require djoudi/laravel5.5-h5p
 ```
 
 ```bash
