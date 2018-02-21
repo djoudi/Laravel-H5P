@@ -42,7 +42,7 @@ class LaravelH5pRepository implements H5PFrameworkInterface {
 	/**
 	 * Implements setErrorMessage
 	 */
-	public function setErrorMessage($message) {
+	public function setErrorMessage($message, $code = null) {
 		if (H5pHelper::current_user_can('edit_h5p_contents')) {
 			$this->messages['error'][] = $message;
 		}
