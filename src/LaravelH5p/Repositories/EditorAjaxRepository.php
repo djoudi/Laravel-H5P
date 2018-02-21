@@ -1,0 +1,92 @@
+<?php
+
+/*
+ *
+ * @Project
+ * @Copyright      leechanrin
+ * @Created        2017-04-07 오전 11:46:59
+ * @Filename       EditorAjaxRepogitory.php
+ * @Description
+ *
+ */
+
+namespace Chali5124\LaravelH5p\Repositories;
+
+use DB;
+use Illuminate\Support\Facades\Auth;
+use H5PEditorAjaxInterface;
+use Chali5124\LaravelH5p\Eloquents\H5pLibrariesHubCache;
+use Chali5124\LaravelH5p\Helpers;
+
+class EditorAjaxRepository implements H5PEditorAjaxInterface {
+
+    public function getAuthorsRecentlyUsedLibraries() {
+        // Get latest version of local libraries
+        $major_versions_sql = "SELECT hl.name,
+                MAX(hl.major_version) AS majorVersion
+           FROM h5p_libraries hl
+          WHERE hl.runnable = 1
+       GROUP BY hl.name";
+
+        $minor_versions_sql = "SELECT hl2.name,
+                 hl2.majorVersion,
+                 MAX(hl2.minorVersion) AS minorVersion
+            FROM ({$major_versions_sql}) hl1
+            JOIN h5p_libraries hl2
+              ON hl1.name = hl2.name
+             AND hl1.majorVersion = hl2.majorVersion
+        GROUP BY hl2.name, hl2.majorVersion";
+
+        return DB::select("SELECT hl4.id,
+                hl4.name AS machine_name,
+                hl4.major_version,
+                hl4.minor_version,
+                hl4.patch_version,
+                hl4.restricted,
+                hl4.has_icon
+           FROM ({$minor_versions_sql}) hl3
+           JOIN h5p_libraries hl4
+             ON hl3.name = hl4.name
+            AND hl3.major_version = hl4.major_version
+            AND hl3.minor_version = hl4.minor_version
+       GROUP BY hl4.name, hl4.major_version, hl4.minor_version");
+    }
+
+    public function getContentTypeCache($machineName = NULL) {
+        $where = H5pLibrariesHubCache::select();
+        if ($machineName) {
+            return $where->where('machine_name', $machineName)->pluck('id', 'is_recommended');
+        } else {
+            return $where->where('machine_name', $machineName)->get();
+        }
+    }
+
+    public function getLatestLibraryVersions() {
+        $recently_used = array();
+        $result = DB::table('h5p_events')
+                ->select([
+                    'library_name',
+                    'max(created_at) AS max_created_at'
+                ])
+                ->where('type', 'content')
+                ->where('sub_type', 'create')
+                ->where('user_id', Auth::id())
+                ->groupBy('library_name')
+                ->orderBy('max_created_at', 'DESC')
+                ->get();
+
+        foreach ($result as $row) {
+            $recently_used[] = $row->library_name;
+        }
+
+        dd($recently_used);
+        exit;
+        return $recently_used;
+    }
+
+    public function validateEditorToken($token) {
+       // return (Helpers::nonce($token) == 'h5p_editor_ajax');
+       return true;
+    }
+
+}

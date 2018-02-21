@@ -1,0 +1,36 @@
+{
+    "name": "chali5124/laravel-h5p",
+    "description": "H5P Plugin for laravel platform",
+    "type": "library",
+    "authors": [
+        {
+            "name": "LEE CHAN RIN",
+            "email": "chali5124@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": false,
+    "autoload": {
+        "psr-4": {
+            "Chali5124\\LaravelH5p\\": "src/LaravelH5p"
+        }
+    },
+    "require": {
+        "php": "^7.0",
+        "laravel/framework": "5.4.*",
+        "nesbot/carbon": "^1.22",
+        "laravelcollective/html": "^5.3",
+        "twbs/bootstrap-sass": "@stable",
+        "h5p/h5p-core": "^1.14",
+        "h5p/h5p-editor": "^1.13",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.6",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.7",
+        "xethron/migrations-generator": "^2.0"
+    }
+
+}
