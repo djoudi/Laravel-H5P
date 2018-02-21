@@ -1,11 +1,10 @@
 # H5P Plugin in Laravel Framework 
 
-I will be back 18 July... with more update.... Sorry... 
 
 ## Installation
 
 ```bash
-composer require chali5124/laravel-h5p
+composer require djoudi/laravel-h5p
 ```
 
 ```bash
@@ -33,7 +32,7 @@ php artisan migrate
 
 ```php
 'providers' => [
-    Chali5124\LaravelH5p\LaravelH5pServiceProvider::class,
+    Djoudi\LaravelH5p\LaravelH5pServiceProvider::class,
 ];
 ```
 
@@ -41,5 +40,3 @@ php artisan migrate
 cd public/assets;
 ln -s ../../storage/h5p;  
 ```
-
-On Development...
