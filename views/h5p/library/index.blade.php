@@ -155,6 +155,8 @@
                         </td>
                     </tr>
                     @endforeach
+
+                 {!! $entrys->links() !!}
                 </tbody>
             </table>
 

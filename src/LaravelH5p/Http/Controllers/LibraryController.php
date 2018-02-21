@@ -20,7 +20,7 @@ class LibraryController extends Controller {
 		$interface = $h5p::$interface;
 		$not_cached = $interface->getNumNotFiltered();
 
-		$entrys = H5pLibrary::get();
+		$entrys = H5pLibrary::paginate(10);
 		$settings = $h5p::get_core(array(
 			'libraryList' => [
 				'notCached' => $not_cached,
