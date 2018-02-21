@@ -1,11 +1,11 @@
 {
-    "name": "chali5124/laravel-h5p",
+    "name": "djoudi/laravel5.5-h5p",
     "description": "H5P Plugin for laravel platform",
     "type": "library",
     "authors": [
         {
-            "name": "LEE CHAN RIN",
-            "email": "chali5124@gmail.com"
+            "name": "Abdelouahab Djoudi",
+            "email": "info@djoudi.net"
         }
     ],
     "license": "MIT",
@@ -13,14 +13,14 @@
     "prefer-stable": false,
     "autoload": {
         "psr-4": {
-            "Chali5124\\LaravelH5p\\": "src/LaravelH5p"
+            "Djoudi\\LaravelH5p\\": "src/LaravelH5p"
         }
     },
     "require": {
         "php": "^7.0",
-        "laravel/framework": "5.4.*",
+        "laravel/framework": "5.5.*",
         "nesbot/carbon": "^1.22",
-        "laravelcollective/html": "^5.3",
+        "laravelcollective/html": "^5.5",
         "twbs/bootstrap-sass": "@stable",
         "h5p/h5p-core": "^1.14",
         "h5p/h5p-editor": "^1.13",
@@ -31,6 +31,17 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.7",
         "xethron/migrations-generator": "^2.0"
+    },
+
+     "extra": {
+        "laravel": {
+            "providers": [
+                "Djoudi\\LaravelH5p\\LaravelH5pServiceProvider"
+            ],
+            "aliases": {
+                "LaravelH5p": "Djoudi\\LaravelH5p\\Facades"
+            }
+        }
     }
 
 }

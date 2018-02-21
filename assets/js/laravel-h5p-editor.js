@@ -1,8 +1,8 @@
 /* 
  *
  * @Project        
- * @Copyright      leechanrin
- * @Created        2017-04-05 오전 11:42:35 
+ * @Copyright      Djoudi
+ * @Created        2018-02-20
  * @Filename       laravel-h5p-editor.js
  * @Description    
  *

@@ -1,8 +1,8 @@
 /* 
  *
  * @Project        
- * @Copyright      leechanrin
- * @Created        2017-04-05 오전 11:42:35 
+ * @Copyright      Djoudi
+ * @Created        2018-02-20
  * @Filename       laravel-h5p.js
  * @Description    
  *
@@ -21,7 +21,7 @@
                 url: "{{ route('laravel-h5p.library.restrict') }}",
                 data: {id: $this.data('id'), selected: $this.is(':checked')},
                 success: function (response) {
-                    alert('변경되었습니다');
+                    alert('Changed');
                 }
             });
 
@@ -30,12 +30,12 @@
         $(document).on("click", ".laravel-h5p-destory", function (e) {
 
             var $this = $(this);
-            if (confirm("해당 라이브러리를 삭제하시겠습니까?")) {
+            if (confirm("Are you sure you want to delete this library?")) {
                 $.ajax({
                     url: "{{ route('laravel-h5p.library.destory') }}",
                     data: {id: $this.data('id')},
                     success: function (response) {
-                        //                        alert('삭제되었습니다');
+                        //                        alert('Deleted');
                         if (response.msg) {
                             alert(response.msg);
                         }
