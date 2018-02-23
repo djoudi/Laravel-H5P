@@ -12,16 +12,17 @@
 
 namespace Djoudi\LaravelH5p\Helpers;
 
-class H5pHelper {
+class H5pHelper
+{
+    //put your code here
 
-	//put your code here
+    public static function current_user_can($permission)
+    {
+        return true;
+    }
 
-	public static function current_user_can($permission) {
-		return true;
-	}
-
-	public static function nonce($token) {
-		return bin2hex($token);
-	}
-
+    public static function nonce($token)
+    {
+        return bin2hex($token);
+    }
 }

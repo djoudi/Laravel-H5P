@@ -18,42 +18,44 @@ use Illuminate\Support\Facades\Auth;
 
 //use Illuminate\Contracts\Events;
 
-class H5pEvent extends H5PEventBase {
+class H5pEvent extends H5PEventBase
+{
+    private $user;
 
-        private $user;
+    /**
+     * Adds event type, h5p library and timestamp to event before saving it.
+     *
+     * @param string $type
+     *                        Name of event to log
+     * @param string $library
+     *                        Name of H5P library affacted
+     */
+    public function __construct($type, $sub_type = null, $content_id = null, $content_title = null, $library_name = null, $library_version = null)
+    {
+        $this->user = Auth::id();
+        parent::__construct($type, $sub_type, $content_id, $content_title, $library_name, $library_version);
+    }
 
-        /**
-         * Adds event type, h5p library and timestamp to event before saving it.
-         *
-         * @param string $type
-         *  Name of event to log
-         * @param string $library
-         *  Name of H5P library affacted
-         */
-        function __construct($type, $sub_type = NULL, $content_id = NULL, $content_title = NULL, $library_name = NULL, $library_version = NULL) {
-                $this->user = Auth::id();
-                parent::__construct($type, $sub_type, $content_id, $content_title, $library_name, $library_version);
-        }
-
-        /**
-         * Store the event.
-         */
-        protected function save() {
+    /**
+     * Store the event.
+     */
+    protected function save()
+    {
 
                 // Get data in array format without NULL values
-                $data = $this->getDataArray();
-                $data['user_id'] = Auth::id();
+        $data = $this->getDataArray();
+        $data['user_id'] = Auth::id();
 
-                // Insert into DB
-                return H5pEventLog::create($data);
-        }
+        // Insert into DB
+        return H5pEventLog::create($data);
+    }
 
-        /**
-         * Count number of events.
-         */
-        protected function saveStats() {
-
-                return true;
+    /**
+     * Count number of events.
+     */
+    protected function saveStats()
+    {
+        return true;
 
 //        $type = $this->type . ' ' . $this->sub_type;
                 //        $current_num = $wpdb->get_var($wpdb->prepare(
@@ -84,6 +86,5 @@ class H5pEvent extends H5PEventBase {
                 //                      ", $type, $this->library_name, $this->library_version));
                 //        }
                 //
-        }
-
+    }
 }
