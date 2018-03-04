@@ -9,14 +9,14 @@
             <h3>{{ $library->title }}</h3>
 
             <ul>
-                <li class=''>버전 : {{ $settings['libraryInfo']['info']['version'] }}</li>
-                <li class=''>풀스크린 : {{ $settings['libraryInfo']['info']['fullscreen'] }}</li>
-                <li class=''>컨텐츠 라이브러리 : {{ $settings['libraryInfo']['info']['content_library'] }}</li>
-                <li class=''>사용컨텐츠 갯수 : {{ $settings['libraryInfo']['info']['used'] }}</li>
+                <li class=''>{{ trans('laravel-h5p.library.version') }} : {{ $settings['libraryInfo']['info']['version'] }}</li>
+                <li class=''>{{ trans('laravel-h5p.h5p.fullscreen') }} : {{ $settings['libraryInfo']['info']['fullscreen'] }}</li>
+                <li class=''> {{ trans('laravel-h5p.library.contents') }}: {{ $settings['libraryInfo']['info']['content_library'] }}</li>
+                <li class=''>{{ trans('laravel-h5p.library.contents_using_it') }}  : {{ $settings['libraryInfo']['info']['used'] }}</li>
             </ul>
 
 
-            <a href="{{ route('h5p.library.index') }}" class="btn btn-default"><i class="fa fa-reply"></i> 돌아가기</a>
+            <a href="{{ route('h5p.library.index') }}" class="btn btn-default"><i class="fa fa-reply"></i> Go Back</a>
 
 
         </div>
