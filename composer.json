@@ -22,8 +22,8 @@
         "nesbot/carbon": "^1.22",
         "laravelcollective/html": "^5.5",
         "twbs/bootstrap-sass": "@stable",
-        "h5p/h5p-core": "^1.14",
-        "h5p/h5p-editor": "^1.13",
+         "h5p/h5p-core": "^1.14",
+         "h5p/h5p-editor": "^1.13",
         "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
