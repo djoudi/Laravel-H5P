@@ -6,6 +6,11 @@
         {
             "name": "Abdelouahab Djoudi",
             "email": "info@djoudi.net"
+        },
+        
+        {
+            "name": "Vittorio Emmermann",
+            "email": "vittorio@cierra.eu"
         }
     ],
     "license": "MIT",
