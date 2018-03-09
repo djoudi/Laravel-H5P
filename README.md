@@ -50,6 +50,6 @@ Add to Composer-Classmap:
 ```
 
 ```bash
-cd public/assets/vendor/h5p;
+cd public/assets/vendor/h5p
 ln -s ../../../../storage/h5p/libraries
 ```
