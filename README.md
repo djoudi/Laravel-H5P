@@ -2,21 +2,32 @@
 
 # H5P Plugin in Laravel Framework 
 
+## Description
+
+This repro is to integrate h5p into laravel. It's a Fork from Djoudi. It's runnable and contains a few extensions. Feel free to contribute!
+
 
 ## Installation
 
+Require it in the Composer.
+
 ```bash
-composer require djoudi/laravel5.5-h5p
+composer require trotexnet/laravel-h5p
 ```
+
+Publish the Views, Config and so things.
 
 ```bash
 php artisan vendor:publish
 ```
 
+Migrate the Database
+
 ```bash
 php artisan migrate
 ```
 
+Add to Composer-Classmap:
 ```php
 'classmap': [
     "vendor/h5p/h5p-core/h5p-default-storage.class.php",
