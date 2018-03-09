@@ -1,5 +1,5 @@
 {
-    "name": "trotexnet/laravel5.5-h5p",
+    "name": "trotexnet/laravel-h5p",
     "description": "H5P Plugin for laravel platform",
     "type": "library",
     "authors": [
