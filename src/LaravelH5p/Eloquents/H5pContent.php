@@ -4,6 +4,7 @@ namespace Djoudi\LaravelH5p\Eloquents;
 
 use DB;
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 //use App\Models\User;
 
@@ -28,7 +29,7 @@ class H5pContent extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function get_user()
