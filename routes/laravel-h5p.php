@@ -2,8 +2,9 @@
 
 Route::group(['middleware' => ['web']], function () {
     if (config('laravel-h5p.use_router') == 'EDITOR' || config('laravel-h5p.use_router') == 'ALL') {
+        
+        Route::resource('h5p', "Djoudi\LaravelH5p\Http\Controllers\H5pController");
         Route::group(['middleware' => ['auth']], function () {
-            Route::resource('h5p', "Djoudi\LaravelH5p\Http\Controllers\H5pController");
 //            Route::get('h5p/export', 'Djoudi\LaravelH5p\Http\Controllers\H5pController@export')->name("h5p.export");
 
             Route::get('library', "Djoudi\LaravelH5p\Http\Controllers\LibraryController@index")->name('h5p.library.index');
