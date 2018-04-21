@@ -191,7 +191,7 @@ class LaravelH5pStorage implements H5PFileStorage
      *
      * @param string $filename
      *
-     * @return boolean
+     * @return bool
      */
     public function hasExport($filename)
     {
@@ -476,7 +476,7 @@ class LaravelH5pStorage implements H5PFileStorage
      *
      * @throws Exception Unable to copy the file
      *
-     * @return boolean
+     * @return bool
      *                 Indicates if the directory existed.
      */
     private static function copyFileTree($source, $destination)
