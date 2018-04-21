@@ -1,5 +1,6 @@
 {
-    "name": "trotexnet/laravel-h5p",
+
+    "name": "djoudi/laravel-h5p",
     "description": "H5P Plugin for laravel platform",
     "type": "library",
     "authors": [
@@ -23,7 +24,7 @@
     },
     "require": {
         "php": "^7.0",
-        "laravel/framework": "5.6.*",
+        "laravel/framework": "5.5.* || 5.6.*",
         "nesbot/carbon": "^1.22",
         "laravelcollective/html": "^5.5",
         "twbs/bootstrap-sass": "@stable",
