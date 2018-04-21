@@ -153,6 +153,7 @@ class H5pController extends Controller
         $embed = $h5p->get_embed($content, $settings);
         $embed_code = $embed['embed'];
         $settings = $embed['settings'];
+        
         // Prepare form
         $library = $content['library'] ? H5PCore::libraryToString($content['library']) : 0;
         $parameters = $content['params'] ? $content['params'] : '{}';
@@ -260,7 +261,6 @@ class H5pController extends Controller
         $embed = $h5p->get_embed($content, $settings);
         $embed_code = $embed['embed'];
         $settings = $embed['settings'];
-        
         $title = $content['title'];
 
         // create event dispatch
