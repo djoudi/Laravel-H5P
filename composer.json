@@ -1,5 +1,5 @@
 {
-    "name": "djoudi/laravel5.5-h5p",
+    "name": "djoudi/laravel-h5p",
     "description": "H5P Plugin for laravel platform",
     "type": "library",
     "authors": [
