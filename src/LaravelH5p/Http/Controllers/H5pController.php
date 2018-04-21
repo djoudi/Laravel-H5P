@@ -261,12 +261,14 @@ class H5pController extends Controller
         $embed = $h5p->get_embed($content, $settings);
         $embed_code = $embed['embed'];
         $settings = $embed['settings'];
+        
+        $title = $content['title'];
 
         // create event dispatch
         event(new H5pEvent('content', null, $content['id'], $content['title'], $content['library']['name'], $content['library']['majorVersion'], $content['library']['minorVersion']));
 
         //     return view('h5p.content.edit', compact("settings", 'user', 'id', 'content', 'library', 'parameters', 'display_options'));
-        return view('h5p.content.show', compact('settings', 'user', 'embed_code'));
+        return view('h5p.content.show', compact('settings', 'user', 'embed_code', 'title'));
     }
 
     public function destroy(Request $request, $id)

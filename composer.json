@@ -1,4 +1,5 @@
 {
+
     "name": "djoudi/laravel-h5p",
     "description": "H5P Plugin for laravel platform",
     "type": "library",
@@ -6,6 +7,11 @@
         {
             "name": "Abdelouahab Djoudi",
             "email": "info@djoudi.net"
+        },
+        
+        {
+            "name": "Vittorio Emmermann",
+            "email": "vittorio@cierra.eu"
         }
     ],
     "license": "MIT",
