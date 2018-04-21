@@ -4,7 +4,6 @@
 
 ## Description
 
-This repro is to integrate h5p into laravel. It's a Fork from Djoudi. It's runnable and contains a few extensions. Feel free to contribute!
 
 
 ## Installation
@@ -12,7 +11,7 @@ This repro is to integrate h5p into laravel. It's a Fork from Djoudi. It's runna
 Require it in the Composer.
 
 ```bash
-composer require trotexnet/laravel-h5p
+composer require djoudi/laravel-h5p
 ```
 
 Publish the Views, Config and so things.
