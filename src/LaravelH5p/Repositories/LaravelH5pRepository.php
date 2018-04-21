@@ -924,7 +924,7 @@ class LaravelH5pRepository implements H5PFrameworkInterface
      *
      * @param int $contentUserId
      *
-     * @return boolean
+     * @return bool
      */
     private static function currentUserCanEdit($contentUserId)
     {
@@ -943,7 +943,7 @@ class LaravelH5pRepository implements H5PFrameworkInterface
      * @param H5PPermission $permission
      * @param int           $contentUserId
      *
-     * @return boolean
+     * @return bool
      */
     public function hasPermission($permission, $contentUserId = null)
     {
