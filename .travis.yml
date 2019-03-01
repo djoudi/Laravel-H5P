@@ -1,0 +1,29 @@
+sudo: false
+
+language: php
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+env:
+  global:
+    - deps=""
+    - COMPOSER_OPTIONS="--prefer-stable"
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.1
+    - php: 7.2
+    - php: 7.3
+
+install:
+  - if [ "$PACKAGES" != "" ]; then composer require --no-update $PACKAGES; fi
+  - composer update $COMPOSER_OPTIONS
+
+script:
+  - vendor/bin/phpspec run
+  - if [[ "$xdebug" = "yes" ]]; then vendor/bin/phpunit --coverage-clover=coverage.clover; else vendor/bin/phpunit; fi
+  - if [[ "$xdebug" = "yes" ]]; then wget https://scrutinizer-ci.com/ocular.phar; fi
+  - if [[ "$xdebug" = "yes" ]]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover; fi
