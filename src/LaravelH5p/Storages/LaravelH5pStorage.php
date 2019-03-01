@@ -477,7 +477,7 @@ class LaravelH5pStorage implements H5PFileStorage
      * @throws Exception Unable to copy the file
      *
      * @return bool
-     *                 Indicates if the directory existed.
+     *              Indicates if the directory existed.
      */
     private static function copyFileTree($source, $destination)
     {
