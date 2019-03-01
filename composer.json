@@ -22,19 +22,19 @@
         }
     },
     "require": {
-        "php": "^7.0",
-        "laravel/framework": "5.5.* || 5.6.*",
-        "nesbot/carbon": "^1.22",
-        "laravelcollective/html": "^5.5",
+        "php": "^7.1",
+        "laravel/framework": "5.8.*",
+        "nesbot/carbon": "^2.14",
+        "laravelcollective/html": "^5.7",
         "twbs/bootstrap-sass": "@stable",
-         "h5p/h5p-core": "^1.14",
-         "h5p/h5p-editor": "^1.13",
+         "h5p/h5p-core": "^1.20.0",
+         "h5p/h5p-editor": "^1.20.0",
         "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
-        "fzaninotto/faker": "^1.6",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.7",
+        "fzaninotto/faker": "^1.8",
+        "mockery/mockery": "1.2.*",
+        "phpunit/phpunit": "~8.0",
         "xethron/migrations-generator": "^2.0"
     },
 
