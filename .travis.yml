@@ -20,6 +20,3 @@ matrix:
 
 install:
   - composer update $COMPOSER_OPTIONS
-
-script:
-  - vendor/bin/phpspec run
