@@ -1,5 +1,4 @@
 [![StyleCI](https://styleci.io/repos/122313672/shield?branch=master)](https://styleci.io/repos/122313672)
-
 [![Build Status](https://travis-ci.org/djoudi/Laravel-H5P.svg?branch=master)](https://travis-ci.org/djoudi/Laravel-H5P)
 
 
