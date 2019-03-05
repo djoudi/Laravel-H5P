@@ -22,7 +22,7 @@
         }
     },
     "require": {
-        "php": "^7.1",
+        "php": "^7.2",
         "laravel/framework": "5.7.*",
         "laravelcollective/html": "5.7",
         "twbs/bootstrap-sass": "@stable",
