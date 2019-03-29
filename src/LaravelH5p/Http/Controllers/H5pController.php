@@ -98,9 +98,14 @@ class H5pController extends Controller
                 if (!$content['library']['libraryId']) {
                     throw new H5PException('No such library');
                 }
-
-                $content['params'] = $request->get('parameters');
-                $params = json_decode($content['params']);
+                //old
+               // $content['params'] = $request->get('parameters');
+               // $params = json_decode($content['params']);
+                
+                
+                //new
+                $params = json_decode($request->get('parameters'));
+                $content['params'] = json_encode($params->params);
                 if ($params === null) {
                     throw new H5PException('Invalid parameters');
                 }
@@ -209,8 +214,13 @@ class H5pController extends Controller
                 }
 
                 //                $content['parameters'] = $request->get('parameters');
-                $content['params'] = $request->get('parameters');
-                $params = json_decode($content['params']);
+                //old
+                //$content['params'] = $request->get('parameters');
+                //$params = json_decode($content['params']);
+                
+                //new
+                $params = json_decode($request->get('parameters'));
+                $content['params'] = json_encode($params->params);
                 if ($params === null) {
                     throw new H5PException('Invalid parameters');
                 }
