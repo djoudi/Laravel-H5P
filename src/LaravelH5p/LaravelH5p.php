@@ -286,6 +286,7 @@ class LaravelH5p
             // for checkeditor,
             'libraryUrl'         => self::get_h5peditor_url(),
             'copyrightSemantics' => self::$contentvalidator->getCopyrightSemantics(),
+            'metadataSemantics' => self::$contentvalidator->getMetadataSemantics(),
             'assets'             => [],
             'deleteMessage'      => trans('laravel-h5p.content.destoryed'),
             'apiVersion'         => H5PCore::$coreApi,
