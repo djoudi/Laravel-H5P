@@ -24,6 +24,7 @@
             ns.assets = H5PIntegration.editor.assets;
             // Required for assets
             ns.baseUrl = '';
+            ns.metadataSemantics = H5PIntegration.editor.metadataSemantics
             if (H5PIntegration.editor.nodeVersionId !== undefined) {
                 ns.contentId = H5PIntegration.editor.nodeVersionId;
             }
