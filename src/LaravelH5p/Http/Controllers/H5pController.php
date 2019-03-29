@@ -99,10 +99,9 @@ class H5pController extends Controller
                     throw new H5PException('No such library');
                 }
                 //old
-               // $content['params'] = $request->get('parameters');
-               // $params = json_decode($content['params']);
-                
-                
+                // $content['params'] = $request->get('parameters');
+                // $params = json_decode($content['params']);
+
                 //new
                 $params = json_decode($request->get('parameters'));
                 $content['params'] = json_encode($params->params);
@@ -217,7 +216,7 @@ class H5pController extends Controller
                 //old
                 //$content['params'] = $request->get('parameters');
                 //$params = json_decode($content['params']);
-                
+
                 //new
                 $params = json_decode($request->get('parameters'));
                 $content['params'] = json_encode($params->params);
