@@ -68,7 +68,7 @@
                         </td>
 
                         <td class="">
-                            {{ $entry->get_user()->first_name }}
+                            {{ $entry->get_user()->name }}
                         </td>
 
                         <td class="text-left">
