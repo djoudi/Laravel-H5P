@@ -14,16 +14,16 @@ class CreateH5pLibrariesTable extends Migration
     public function up()
     {
         Schema::create('h5p_libraries', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name', 127);
             $table->string('title');
-            $table->integer('major_version')->unsigned();
-            $table->integer('minor_version')->unsigned();
-            $table->integer('patch_version')->unsigned();
-            $table->integer('runnable')->unsigned()->index('runnable');
+            $table->bigInteger('major_version')->unsigned();
+            $table->bigInteger('minor_version')->unsigned();
+            $table->bigInteger('patch_version')->unsigned();
+            $table->bigInteger('runnable')->unsigned()->index('runnable');
             $table->integer('restricted')->unsigned()->default(0);
-            $table->integer('fullscreen')->unsigned();
+            $table->bigInteger('fullscreen')->unsigned();
             $table->string('embed_types');
             $table->text('preloaded_js', 65535)->nullable();
             $table->text('preloaded_css', 65535)->nullable();

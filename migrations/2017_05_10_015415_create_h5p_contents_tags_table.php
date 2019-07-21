@@ -14,8 +14,8 @@ class CreateH5pContentsTagsTable extends Migration
     public function up()
     {
         Schema::create('h5p_contents_tags', function (Blueprint $table) {
-            $table->integer('content_id')->unsigned();
-            $table->integer('tag_id')->unsigned();
+            $table->bigInteger('content_id')->unsigned();
+            $table->bigInteger('tag_id')->unsigned();
             $table->primary(['content_id', 'tag_id']);
         });
     }

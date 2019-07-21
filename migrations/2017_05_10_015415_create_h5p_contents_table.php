@@ -14,16 +14,16 @@ class CreateH5pContentsTable extends Migration
     public function up()
     {
         Schema::create('h5p_contents', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->timestamps();
-            $table->integer('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('title');
-            $table->integer('library_id')->unsigned();
+            $table->bigInteger('library_id')->unsigned();
             $table->text('parameters');
             $table->text('filtered');
             $table->string('slug', 127);
             $table->string('embed_type', 127);
-            $table->integer('disable')->unsigned()->default(0);
+            $table->bigInteger('disable')->unsigned()->default(0);
             $table->string('content_type', 127)->nullable();
             $table->string('author', 127)->nullable();
             $table->string('license', 7)->nullable();

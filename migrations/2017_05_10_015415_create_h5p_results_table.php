@@ -14,14 +14,14 @@ class CreateH5pResultsTable extends Migration
     public function up()
     {
         Schema::create('h5p_results', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('content_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->integer('score')->unsigned();
-            $table->integer('max_score')->unsigned();
-            $table->integer('opened')->unsigned();
-            $table->integer('finished')->unsigned();
-            $table->integer('time')->unsigned();
+            $table->bigIncrements('id');
+            $table->bigInteger('content_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('score')->unsigned();
+            $table->bigInteger('max_score')->unsigned();
+            $table->bigInteger('opened')->unsigned();
+            $table->bigInteger('finished')->unsigned();
+            $table->bigInteger('time')->unsigned();
             $table->index(['content_id', 'user_id'], 'content_user');
         });
     }

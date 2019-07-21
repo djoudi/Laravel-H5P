@@ -14,7 +14,7 @@ class CreateH5pEventLogsTable extends Migration
     public function up()
     {
         Schema::create('h5p_event_logs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('type');
             $table->string('sub_type');
             $table->string('content_id');

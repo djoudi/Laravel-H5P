@@ -14,21 +14,21 @@ class CreateH5pLibrariesHubCacheTable extends Migration
     public function up()
     {
         Schema::create('h5p_libraries_hub_cache', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('machine_name', 127);
-            $table->integer('major_version')->unsigned();
-            $table->integer('minor_version')->unsigned();
-            $table->integer('patch_version')->unsigned();
-            $table->integer('h5p_major_version')->unsigned()->nullable();
-            $table->integer('h5p_minor_version')->unsigned()->nullable();
+            $table->bigInteger('major_version')->unsigned();
+            $table->bigInteger('minor_version')->unsigned();
+            $table->bigInteger('patch_version')->unsigned();
+            $table->bigInteger('h5p_major_version')->unsigned()->nullable();
+            $table->bigInteger('h5p_minor_version')->unsigned()->nullable();
             $table->string('title');
             $table->text('summary', 65535);
             $table->text('description', 65535);
             $table->string('icon', 511);
-            $table->integer('created_at')->unsigned();
-            $table->integer('updated_at')->unsigned();
-            $table->integer('is_recommended')->unsigned();
-            $table->integer('popularity')->unsigned();
+            $table->bigInteger('created_at')->unsigned();
+            $table->bigInteger('updated_at')->unsigned();
+            $table->bigInteger('is_recommended')->unsigned();
+            $table->bigInteger('popularity')->unsigned();
             $table->text('screenshots', 65535)->nullable();
             $table->string('license', 511)->nullable();
             $table->string('example', 511);

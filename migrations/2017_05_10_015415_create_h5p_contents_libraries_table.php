@@ -14,8 +14,8 @@ class CreateH5pContentsLibrariesTable extends Migration
     public function up()
     {
         Schema::create('h5p_contents_libraries', function (Blueprint $table) {
-            $table->integer('content_id')->unsigned();
-            $table->integer('library_id')->unsigned();
+            $table->bigInteger('content_id')->unsigned();
+            $table->bigInteger('library_id')->unsigned();
             $table->string('dependency_type', 31);
             $table->smallInteger('weight')->unsigned()->default(0);
             $table->boolean('drop_css');

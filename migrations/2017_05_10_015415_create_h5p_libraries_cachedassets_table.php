@@ -14,7 +14,7 @@ class CreateH5pLibrariesCachedassetsTable extends Migration
     public function up()
     {
         Schema::create('h5p_libraries_cachedassets', function (Blueprint $table) {
-            $table->integer('library_id')->unsigned();
+            $table->bigInteger('library_id')->unsigned();
             $table->string('hash', 64);
             $table->primary(['library_id', 'hash'], 'fk_primary');
         });
