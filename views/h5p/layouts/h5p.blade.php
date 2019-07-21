@@ -16,7 +16,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url('/assets/css/app.css') }}"/>
+        <link rel="stylesheet" href="{{ url('css/app.css') }}"/>
 
         @stack('h5p-header-script')
 
@@ -139,7 +139,7 @@
 
         </div>
 
-        <script type="text/javascript" src="{{ url('/assets/js/app.js') }}"></script>        
+        <script type="text/javascript" src="{{ url('js/app.js') }}"></script>        
         @stack('h5p-footer-script')
 
     </body>
