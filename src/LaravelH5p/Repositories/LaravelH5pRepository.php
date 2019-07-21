@@ -698,7 +698,7 @@ class LaravelH5pRepository implements H5PFrameworkInterface
     /**
      * Implements getNumContent().
      */
-    public function getNumContent($library_id)
+    public function getNumContent($library_id, $skip = NULL)
     {
         return H5pContent::where('library_id', $library_id)->count();
     }
