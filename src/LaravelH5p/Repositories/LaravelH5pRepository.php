@@ -39,6 +39,12 @@ class LaravelH5pRepository implements H5PFrameworkInterface
      */
     protected $messages = ['error' => [], 'updated' => []];
 
+
+
+     public function loadAddons();
+     public function getLibraryConfig($libraries = NULL);  
+     public function libraryHasUpgrade($library); 
+
     /**
      * Implements setErrorMessage.
      */
