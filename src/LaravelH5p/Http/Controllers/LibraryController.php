@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use DB;
 use Djoudi\LaravelH5p\Eloquents\H5pContent;
 use Djoudi\LaravelH5p\Eloquents\H5pLibrary;
-use Djoudi\LaravelH5p\LaravelH5p;
 use H5PCore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
