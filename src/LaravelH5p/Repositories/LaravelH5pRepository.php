@@ -41,9 +41,9 @@ class LaravelH5pRepository implements H5PFrameworkInterface
 
 
 
-     public function loadAddons();
-     public function getLibraryConfig($libraries = NULL);  
-     public function libraryHasUpgrade($library); 
+     public function loadAddons(){}
+     public function getLibraryConfig($libraries = NULL){}
+     public function libraryHasUpgrade($library){}
 
     /**
      * Implements setErrorMessage.
