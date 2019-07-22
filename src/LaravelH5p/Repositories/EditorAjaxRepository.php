@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EditorAjaxRepository implements H5PEditorAjaxInterface
 {
+
     public function getAuthorsRecentlyUsedLibraries()
     {
         // Get latest version of local libraries
@@ -92,4 +93,6 @@ class EditorAjaxRepository implements H5PEditorAjaxInterface
         // return (Helpers::nonce($token) == 'h5p_editor_ajax');
         return true;
     }
+
+    public function getTranslations($libraries, $language_code){}
 }
