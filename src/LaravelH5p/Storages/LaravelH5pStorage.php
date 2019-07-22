@@ -37,6 +37,13 @@ class LaravelH5pStorage implements H5PFileStorage
         $this->alteditorpath = $alteditorpath;
     }
 
+
+ public function hasPresave($libraryName, $developmentPath = null){
+
+ }
+
+   public function getUpgradeScript($machineName, $majorVersion, $minorVersion){}
+
     /**
      * Store the library folder.
      *
