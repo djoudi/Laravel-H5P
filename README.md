@@ -57,3 +57,6 @@ cd public/assets/vendor/h5p
 ln -s ../../../../storage/h5p/libraries
 ln -s ../../../../storage/h5p/editor
 ```
+
+## Demo
+you can see a demo  at : https://github.com/djoudi/laravel-h5p-demo
