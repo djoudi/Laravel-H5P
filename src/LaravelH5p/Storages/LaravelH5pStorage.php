@@ -578,4 +578,16 @@ class LaravelH5pStorage implements H5PFileStorage
         return $this->path.'/editor';
 //        return ($this->alteditorpath !== NULL ? $this->alteditorpath : "{$this->path}/editor");
     }
+
+    /**
+   * Store the given stream into the given file.
+   *
+   * @param string $path
+   * @param string $file
+   * @param resource $stream
+   * @return bool
+   */
+  public function saveFileFromZip($path, $file, $stream){
+    return true;
+  }
 }
