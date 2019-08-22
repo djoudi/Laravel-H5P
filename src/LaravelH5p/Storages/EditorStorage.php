@@ -31,7 +31,9 @@ class EditorStorage implements H5peditorStorage
         $h5p->alter_assets($files, $libraries, 'editor');
     }
 
-     public function getAvailableLanguages($machineName, $majorVersion, $minorVersion){}
+    public function getAvailableLanguages($machineName, $majorVersion, $minorVersion)
+    {
+    }
 
     public function getLanguage($machineName, $majorVersion, $minorVersion, $language)
     {
