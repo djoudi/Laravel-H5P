@@ -20,7 +20,8 @@ class AjaxController extends Controller
         $h5p = App::make('LaravelH5p');
         $core = $h5p::$core;
         $editor = $h5p::$h5peditor;
-         log($machineName);
+         //log($machineName);
+         Log::debug('An informational message.'.$machineName);
         if ($machineName) {
             $editor->ajax->action(H5PEditorEndpoints::SINGLE_LIBRARY, $machineName, $major_version, $minor_version, $h5p->get_language(), '', $h5p->get_h5plibrary_url('', true));
             // Log library load
