@@ -10,6 +10,7 @@ use Djoudi\LaravelH5p\LaravelH5p;
 use H5PCore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Log;
 
 class LibraryController extends Controller
 {
