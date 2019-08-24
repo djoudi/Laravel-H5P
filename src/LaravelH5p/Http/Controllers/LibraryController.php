@@ -115,6 +115,7 @@ class LibraryController extends Controller
         ]);
 
         if ($request->hasFile('h5p_file') && $request->file('h5p_file')->isValid()) {
+            Log::info('Yes Good ');
             $h5p = App::make('LaravelH5p');
             $validator = $h5p::$validator;
             $interface = $h5p::$interface;
@@ -142,6 +143,7 @@ class LibraryController extends Controller
                 ->with('success', trans('laravel-h5p.library.updated'));
         }
 
+        Log::info('Not Good Good ');
         return redirect()
             ->route('h5p.library.index')
             ->with('error', trans('laravel-h5p.library.can_not_updated'));
