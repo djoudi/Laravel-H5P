@@ -131,6 +131,7 @@ class LibraryController extends Controller
             if ($validator->isValidPackage($skipContent, $h5p_upgrade_only)) {
                 $storage = $h5p::$storage;
                 $storage->savePackage($content, null, $skipContent);
+                Log::info('All is OK ');
             }
 
 //            if ($request->get('sync_hub')) {
