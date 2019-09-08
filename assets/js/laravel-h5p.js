@@ -16,14 +16,14 @@
             ns.basePath = H5PIntegration.editor.libraryUrl;
             ns.fileIcon = H5PIntegration.editor.fileIcon;
             ns.ajaxPath = H5PIntegration.editor.ajaxPath;
-            ns.filesPath = H5PIntegration.editor.filesPath;
+            ns.filesPath = H5PIntegration.editor.filesPath+ '/editor';  // test to add /editor
             ns.apiVersion = H5PIntegration.editor.apiVersion;
             // Semantics describing what copyright information can be stored for media.
             ns.copyrightSemantics = H5PIntegration.editor.copyrightSemantics;
             // Required styles and scripts for the editor
             ns.assets = H5PIntegration.editor.assets;
             // Required for assets
-            ns.baseUrl = '';
+            ns.baseUrl = H5PIntegration.baseUrl;
             ns.metadataSemantics = H5PIntegration.editor.metadataSemantics
             if (H5PIntegration.editor.nodeVersionId !== undefined) {
                 ns.contentId = H5PIntegration.editor.nodeVersionId;

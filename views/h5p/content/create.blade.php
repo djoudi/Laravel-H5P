@@ -55,7 +55,7 @@
                         <input type="file" name="h5p_file" id="h5p-file" class="laravel-h5p-upload form-control"/>
                         <small class="h5p-disable-file-check helper-block">
                             <label class="">
-                                <input type="checkbox" name="h5p_disable_file_check" id="h5p-disable-file-check"/> {{ trans('laravel-h5p.content.upload_disable_extension_check') }}
+   <input type="checkbox" name="h5p_disable_file_check" id="h5p-disable-file-check"/> {{ trans('laravel-h5p.content.upload_disable_extension_check') }}
                             </label>
                         </small>
 
