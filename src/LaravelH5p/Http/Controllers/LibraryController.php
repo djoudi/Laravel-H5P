@@ -49,7 +49,7 @@ class LibraryController extends Controller
         }
 
         $last_update = config('laravel-h5p.h5p_content_type_cache_updated_at');
-        $hubOn = onfig('laravel-h5p.h5p_hub_is_enabled');
+        $hubOn = config('laravel-h5p.h5p_hub_is_enabled');
         $required_files = $this->assets(['js/h5p-library-list.js']);
 
         if ($not_cached) {
