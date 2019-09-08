@@ -255,12 +255,12 @@ class LibraryController extends Controller
      *
      * @param int $id optional
      */
-    private function get_library($id = null)
+    private function get_library($id = NULL)
     {
 //        if ($this->library !== NULL) {
         //            return $this->library; // Return the current loaded library.
         //        }
-        if ($id === null) {
+        if ($id === NULL) {
             $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         }
 
@@ -276,7 +276,7 @@ class LibraryController extends Controller
     public function display_libraries_page()
     {
         switch (filter_input(INPUT_GET, 'task', FILTER_SANITIZE_STRING)) {
-        case null:
+        case NULL:
             $this->display_libraries();
 
             return;
