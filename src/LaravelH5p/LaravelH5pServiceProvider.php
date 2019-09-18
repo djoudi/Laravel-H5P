@@ -2,7 +2,8 @@
 
 namespace Djoudi\LaravelH5p;
 
-use Djoudi\LaravelH5p\Commands\{MigrationCommand,ResetCommand};
+use Djoudi\LaravelH5p\Commands\MigrationCommand;
+use Djoudi\LaravelH5p\Commands\ResetCommand;
 use Djoudi\LaravelH5p\Helpers\H5pHelper;
 
 class LaravelH5pServiceProvider extends \Illuminate\Support\ServiceProvider

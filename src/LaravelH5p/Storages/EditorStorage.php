@@ -14,7 +14,8 @@ namespace Djoudi\LaravelH5p\Storages;
 
 use App;
 use DB;
-use Djoudi\LaravelH5p\Eloquents\{H5pLibrary,H5pTmpfile};
+use Djoudi\LaravelH5p\Eloquents\H5pLibrary;
+use Djoudi\LaravelH5p\Eloquents\H5pTmpfile;
 use H5peditorStorage;
 
 /**
@@ -30,7 +31,9 @@ class EditorStorage implements H5peditorStorage
         $h5p->alter_assets($files, $libraries, 'editor');
     }
 
-     public function getAvailableLanguages($machineName, $majorVersion, $minorVersion){}
+    public function getAvailableLanguages($machineName, $majorVersion, $minorVersion)
+    {
+    }
 
     public function getLanguage($machineName, $majorVersion, $minorVersion, $language)
     {

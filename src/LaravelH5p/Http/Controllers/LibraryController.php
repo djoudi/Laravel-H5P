@@ -4,9 +4,9 @@ namespace Djoudi\LaravelH5p\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use DB;
-use Djoudi\LaravelH5p\Eloquents\{H5pContent,H5pLibrary};
+use Djoudi\LaravelH5p\Eloquents\H5pContent;
+use Djoudi\LaravelH5p\Eloquents\H5pLibrary;
 //use Djoudi\LaravelH5p\Eloquents\H5pLibrary;
-use Djoudi\LaravelH5p\LaravelH5p;
 use H5PCore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -146,6 +146,7 @@ class LibraryController extends Controller
         }
 
         Log::info('Not Good Good ');
+
         return redirect()
             ->route('h5p.library.index')
             ->with('error', trans('laravel-h5p.library.can_not_updated'));
@@ -255,12 +256,12 @@ class LibraryController extends Controller
      *
      * @param int $id optional
      */
-    private function get_library($id = NULL)
+    private function get_library($id = null)
     {
 //        if ($this->library !== NULL) {
         //            return $this->library; // Return the current loaded library.
         //        }
-        if ($id === NULL) {
+        if ($id === null) {
             $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         }
 
@@ -276,7 +277,7 @@ class LibraryController extends Controller
     public function display_libraries_page()
     {
         switch (filter_input(INPUT_GET, 'task', FILTER_SANITIZE_STRING)) {
-        case NULL:
+        case null:
             $this->display_libraries();
 
             return;

@@ -12,8 +12,10 @@
 
 namespace Djoudi\LaravelH5p;
 
-use Djoudi\LaravelH5p\Repositories\{EditorAjaxRepository,LaravelH5pRepository};
-use Djoudi\LaravelH5p\Storages\{EditorStorage,LaravelH5pStorage};
+use Djoudi\LaravelH5p\Repositories\EditorAjaxRepository;
+use Djoudi\LaravelH5p\Repositories\LaravelH5pRepository;
+use Djoudi\LaravelH5p\Storages\EditorStorage;
+use Djoudi\LaravelH5p\Storages\LaravelH5pStorage;
 use H5PContentValidator;
 use H5PCore;
 //use H5PDevelopment;
@@ -284,7 +286,7 @@ class LaravelH5p
             // for checkeditor,
             'libraryUrl'         => self::get_h5peditor_url(),
             'copyrightSemantics' => self::$contentvalidator->getCopyrightSemantics(),
-            'metadataSemantics' => self::$contentvalidator->getMetadataSemantics(),
+            'metadataSemantics'  => self::$contentvalidator->getMetadataSemantics(),
             'assets'             => [],
             'deleteMessage'      => trans('laravel-h5p.content.destoryed'),
             'apiVersion'         => H5PCore::$coreApi,

@@ -14,8 +14,12 @@ namespace Djoudi\LaravelH5p\Repositories;
 
 use Carbon\Carbon;
 use DB;
-use Djoudi\LaravelH5p\Eloquents\{H5pContent,H5pContentsLibrary,H5pContentsUserData,H5pLibrariesLibrary,H5pLibrary,H5pResult};
-
+use Djoudi\LaravelH5p\Eloquents\H5pContent;
+use Djoudi\LaravelH5p\Eloquents\H5pContentsLibrary;
+use Djoudi\LaravelH5p\Eloquents\H5pContentsUserData;
+use Djoudi\LaravelH5p\Eloquents\H5pLibrariesLibrary;
+use Djoudi\LaravelH5p\Eloquents\H5pLibrary;
+use Djoudi\LaravelH5p\Eloquents\H5pResult;
 use Djoudi\LaravelH5p\Events\H5pEvent;
 use Djoudi\LaravelH5p\Helpers\H5pHelper;
 use GuzzleHttp\Client;
@@ -35,11 +39,17 @@ class LaravelH5pRepository implements H5PFrameworkInterface
      */
     protected $messages = ['error' => [], 'updated' => []];
 
+    public function loadAddons()
+    {
+    }
 
+    public function getLibraryConfig($libraries = null)
+    {
+    }
 
-     public function loadAddons(){}
-     public function getLibraryConfig($libraries = NULL){}
-     public function libraryHasUpgrade($library){}
+    public function libraryHasUpgrade($library)
+    {
+    }
 
     /**
      * Implements setErrorMessage.
@@ -700,7 +710,7 @@ class LaravelH5pRepository implements H5PFrameworkInterface
     /**
      * Implements getNumContent().
      */
-    public function getNumContent($library_id, $skip = NULL)
+    public function getNumContent($library_id, $skip = null)
     {
         return H5pContent::where('library_id', $library_id)->count();
     }
