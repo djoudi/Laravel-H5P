@@ -10,6 +10,7 @@ use Djoudi\LaravelH5p\LaravelH5p;
 use H5PCore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Log;
 
 class LibraryController extends Controller
 {
@@ -115,6 +116,7 @@ class LibraryController extends Controller
         ]);
 
         if ($request->hasFile('h5p_file') && $request->file('h5p_file')->isValid()) {
+            Log::info('Yes Good ');
             $h5p = App::make('LaravelH5p');
             $validator = $h5p::$validator;
             $interface = $h5p::$interface;
@@ -129,6 +131,7 @@ class LibraryController extends Controller
             if ($validator->isValidPackage($skipContent, $h5p_upgrade_only)) {
                 $storage = $h5p::$storage;
                 $storage->savePackage($content, null, $skipContent);
+                Log::info('All is OK ');
             }
 
 //            if ($request->get('sync_hub')) {
@@ -142,6 +145,7 @@ class LibraryController extends Controller
                 ->with('success', trans('laravel-h5p.library.updated'));
         }
 
+        Log::info('Not Good Good ');
         return redirect()
             ->route('h5p.library.index')
             ->with('error', trans('laravel-h5p.library.can_not_updated'));

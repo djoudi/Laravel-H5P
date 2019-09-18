@@ -8,6 +8,7 @@ use Djoudi\LaravelH5p\LaravelH5p;
 use H5PEditorEndpoints;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Log;
 
 class AjaxController extends Controller
 {
@@ -21,8 +22,16 @@ class AjaxController extends Controller
         $core = $h5p::$core;
         $editor = $h5p::$h5peditor;
 
+         //log($machineName);
+         Log::debug('An informational message.'.$machineName.'====='.$h5p->get_language());
         if ($machineName) {
-            $editor->ajax->action(H5PEditorEndpoints::SINGLE_LIBRARY, $machineName, $major_version, $minor_version, $h5p->get_language(), '', $h5p->get_h5plibrary_url('', true));
+           $defaultLanguag = $editor->getLibraryLanguage($machineName, $major_version, $minor_version, $h5p->get_language());
+        Log::debug('An informational message.'.$machineName.'====='.$h5p->get_language().'====='.$defaultLanguag);
+
+        
+            //   public function getLibraryData($machineName, $majorVersion, $minorVersion, $languageCode, $prefix = '', $fileDir = '', $defaultLanguage) {
+
+            $editor->ajax->action(H5PEditorEndpoints::SINGLE_LIBRARY, $machineName, $major_version, $minor_version, $h5p->get_language(), '', $h5p->get_h5plibrary_url('', true),$defaultLanguag);  //$defaultLanguage
             // Log library load
             event(new H5pEvent('library', null, null, null, $machineName, $major_version.'.'.$minor_version));
         } else {
