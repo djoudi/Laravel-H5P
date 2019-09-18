@@ -14,12 +14,8 @@ namespace Djoudi\LaravelH5p\Repositories;
 
 use Carbon\Carbon;
 use DB;
-use Djoudi\LaravelH5p\Eloquents\H5pContent;
-use Djoudi\LaravelH5p\Eloquents\H5pContentsLibrary;
-use Djoudi\LaravelH5p\Eloquents\H5pContentsUserData;
-use Djoudi\LaravelH5p\Eloquents\H5pLibrariesLibrary;
-use Djoudi\LaravelH5p\Eloquents\H5pLibrary;
-use Djoudi\LaravelH5p\Eloquents\H5pResult;
+use Djoudi\LaravelH5p\Eloquents\{H5pContent,H5pContentsLibrary,H5pContentsUserData,H5pLibrariesLibrary,H5pLibrary,H5pResult};
+
 use Djoudi\LaravelH5p\Events\H5pEvent;
 use Djoudi\LaravelH5p\Helpers\H5pHelper;
 use GuzzleHttp\Client;

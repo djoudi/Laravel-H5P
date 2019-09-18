@@ -10,7 +10,7 @@
  *
  */
 
-namespace Chali5124\LaravelH5p\Exceptions;
+namespace Djoudi\LaravelH5p\Exceptions;
 
 use Exception;
 

@@ -12,10 +12,8 @@
 
 namespace Djoudi\LaravelH5p;
 
-use Djoudi\LaravelH5p\Repositories\EditorAjaxRepository;
-use Djoudi\LaravelH5p\Repositories\LaravelH5pRepository;
-use Djoudi\LaravelH5p\Storages\EditorStorage;
-use Djoudi\LaravelH5p\Storages\LaravelH5pStorage;
+use Djoudi\LaravelH5p\Repositories\{EditorAjaxRepository,LaravelH5pRepository};
+use Djoudi\LaravelH5p\Storages\{EditorStorage,LaravelH5pStorage};
 use H5PContentValidator;
 use H5PCore;
 //use H5PDevelopment;

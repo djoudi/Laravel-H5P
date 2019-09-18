@@ -14,8 +14,7 @@ namespace Djoudi\LaravelH5p\Storages;
 
 use App;
 use DB;
-use Djoudi\LaravelH5p\Eloquents\H5pLibrary;
-use Djoudi\LaravelH5p\Eloquents\H5pTmpfile;
+use Djoudi\LaravelH5p\Eloquents\{H5pLibrary,H5pTmpfile};
 use H5peditorStorage;
 
 /**
