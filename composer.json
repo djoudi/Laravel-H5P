@@ -18,8 +18,8 @@
     },
     "require": {
         "php": "^7.1",
-        "laravel/framework": "5.8.*",
-        "laravelcollective/html": "5.8",
+        "laravel/framework": "6.0.*",
+        "laravelcollective/html": "6.0",
         "twbs/bootstrap-sass": "@stable",
          "h5p/h5p-core": "^1.23.0",
          "h5p/h5p-editor": "^1.23.0",
