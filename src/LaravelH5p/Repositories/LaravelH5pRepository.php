@@ -39,17 +39,11 @@ class LaravelH5pRepository implements H5PFrameworkInterface
      */
     protected $messages = ['error' => [], 'updated' => []];
 
-    public function loadAddons()
-    {
-    }
 
-    public function getLibraryConfig($libraries = null)
-    {
-    }
 
-    public function libraryHasUpgrade($library)
-    {
-    }
+     public function loadAddons(){}
+     public function getLibraryConfig($libraries = NULL){}
+     public function libraryHasUpgrade($library){}
 
     /**
      * Implements setErrorMessage.
@@ -710,7 +704,7 @@ class LaravelH5pRepository implements H5PFrameworkInterface
     /**
      * Implements getNumContent().
      */
-    public function getNumContent($library_id, $skip = null)
+    public function getNumContent($library_id, $skip = NULL)
     {
         return H5pContent::where('library_id', $library_id)->count();
     }

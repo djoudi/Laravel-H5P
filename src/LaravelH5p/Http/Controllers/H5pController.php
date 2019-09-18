@@ -5,6 +5,7 @@ namespace Djoudi\LaravelH5p\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Djoudi\LaravelH5p\Eloquents\H5pContent;
 use Djoudi\LaravelH5p\Events\H5pEvent;
+use Djoudi\LaravelH5p\LaravelH5p;
 use H5pCore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -98,9 +99,10 @@ class H5pController extends Controller
                     throw new H5PException('No such library');
                 }
                 //old
-                // $content['params'] = $request->get('parameters');
-                // $params = json_decode($content['params']);
-
+               // $content['params'] = $request->get('parameters');
+               // $params = json_decode($content['params']);
+                
+                
                 //new
                 $params = json_decode($request->get('parameters'));
                 $content['params'] = json_encode($params->params);
@@ -215,7 +217,7 @@ class H5pController extends Controller
                 //old
                 //$content['params'] = $request->get('parameters');
                 //$params = json_decode($content['params']);
-
+                
                 //new
                 $params = json_decode($request->get('parameters'));
                 $content['params'] = json_encode($params->params);
