@@ -19,31 +19,29 @@ use Illuminate\Support\Facades\Auth;
 
 class EditorAjaxRepository implements H5PEditorAjaxInterface
 {
-
-
- /**
-   * Gets recently used libraries for the current author
-   *
-   * @return array machine names. The first element in the array is the
-   * most recently used.
-   */
-/*  public function getAuthorsRecentlyUsedLibraries() {
-    global $wpdb;
-    $recently_used = array();
-    $result = $wpdb->get_results($wpdb->prepare(
-     "SELECT library_name, max(created_at) AS max_created_at
-         FROM {$wpdb->prefix}h5p_events
-        WHERE type='content' AND sub_type = 'create' AND user_id = %d
-     GROUP BY library_name
-     ORDER BY max_created_at DESC",
-      get_current_user_id()
-    ));
-    foreach ($result as $row) {
-      $recently_used[] = $row->library_name;
-    }
-    return $recently_used;
-  }
-*/
+    /**
+     * Gets recently used libraries for the current author.
+     *
+     * @return array machine names. The first element in the array is the
+     *               most recently used.
+     */
+    /*  public function getAuthorsRecentlyUsedLibraries() {
+        global $wpdb;
+        $recently_used = array();
+        $result = $wpdb->get_results($wpdb->prepare(
+         "SELECT library_name, max(created_at) AS max_created_at
+             FROM {$wpdb->prefix}h5p_events
+            WHERE type='content' AND sub_type = 'create' AND user_id = %d
+         GROUP BY library_name
+         ORDER BY max_created_at DESC",
+          get_current_user_id()
+        ));
+        foreach ($result as $row) {
+          $recently_used[] = $row->library_name;
+        }
+        return $recently_used;
+      }
+    */
     public function getAuthorsRecentlyUsedLibraries()
     {
         // Get latest version of local libraries
@@ -118,5 +116,7 @@ class EditorAjaxRepository implements H5PEditorAjaxInterface
         return true;
     }
 
-    public function getTranslations($libraries, $language_code){}
+    public function getTranslations($libraries, $language_code)
+    {
+    }
 }
