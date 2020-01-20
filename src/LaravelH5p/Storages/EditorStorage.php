@@ -31,7 +31,9 @@ class EditorStorage implements H5peditorStorage
         $h5p->alter_assets($files, $libraries, 'editor');
     }
 
-     public function getAvailableLanguages($machineName, $majorVersion, $minorVersion){}
+    public function getAvailableLanguages($machineName, $majorVersion, $minorVersion)
+    {
+    }
 
     public function getLanguage($machineName, $majorVersion, $minorVersion, $language)
     {
@@ -77,22 +79,22 @@ class EditorStorage implements H5peditorStorage
             $libraries = [];
             $libraries_result = H5pLibrary::where('runnable', 1)
                 ->select([
-//                        'id',
+                    //                        'id',
                     'name',
                     'title',
                     'major_version AS majorVersion',
                     'minor_version AS minorVersion',
                     'patch_version AS patchVersion',
-//                        'runnable',
+                    //                        'runnable',
                     'restricted',
-//                        'fullscreen',
+                    //                        'fullscreen',
                     //                        'embed_types',
                     //                        'preloaded_js',
                     //                        'preloaded_css',
                     //                        'drop_library_css',
                     //                        'semantics',
                     'tutorial_url',
-//                        'has_icon',
+                    //                        'has_icon',
                     //                        'created_at',
                     //                        'updated_at'
                 ])
