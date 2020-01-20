@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use DB;
 use Djoudi\LaravelH5p\Eloquents\H5pContent;
 use Djoudi\LaravelH5p\Eloquents\H5pLibrary;
-use Djoudi\LaravelH5p\LaravelH5p;
 use H5PCore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -146,6 +145,7 @@ class LibraryController extends Controller
         }
 
         Log::info('Not Good Good ');
+
         return redirect()
             ->route('h5p.library.index')
             ->with('error', trans('laravel-h5p.library.can_not_updated'));
@@ -320,7 +320,7 @@ class LibraryController extends Controller
             'url'      => route('h5p.ajax.rebuild-cache'),
             'message'  => __('Not all content has gotten their cache rebuilt. This is required to be able to delete libraries, and to display how many contents that uses the library.'),
             'progress' => __('1 content need to get its cache rebuilt. :num contents needs to get their cache rebuilt.', ['num' => $num]),
-//            'button' => __('Rebuild cache')
+            //            'button' => __('Rebuild cache')
         ];
     }
 

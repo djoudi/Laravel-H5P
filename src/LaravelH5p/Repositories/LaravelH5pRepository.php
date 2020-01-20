@@ -39,11 +39,17 @@ class LaravelH5pRepository implements H5PFrameworkInterface
      */
     protected $messages = ['error' => [], 'updated' => []];
 
+    public function loadAddons()
+    {
+    }
 
+    public function getLibraryConfig($libraries = null)
+    {
+    }
 
-     public function loadAddons(){}
-     public function getLibraryConfig($libraries = NULL){}
-     public function libraryHasUpgrade($library){}
+    public function libraryHasUpgrade($library)
+    {
+    }
 
     /**
      * Implements setErrorMessage.
@@ -272,17 +278,17 @@ class LaravelH5pRepository implements H5PFrameworkInterface
         } else {
             $library['libraryId'] = DB::table('h5p_libraries')
                 ->where('id', $library['libraryId'])->update([
-                'title'            => $library['title'],
-                'patch_version'    => $library['patchVersion'],
-                'runnable'         => $library['runnable'],
-                'fullscreen'       => $library['fullscreen'],
-                'embed_types'      => $embedTypes,
-                'preloaded_js'     => $preloadedJs,
-                'preloaded_css'    => $preloadedCss,
-                'drop_library_css' => $dropLibraryCss,
-                'semantics'        => $library['semantics'],
-                'has_icon'         => $library['hasIcon'] ? 1 : 0,
-            ]);
+                    'title'            => $library['title'],
+                    'patch_version'    => $library['patchVersion'],
+                    'runnable'         => $library['runnable'],
+                    'fullscreen'       => $library['fullscreen'],
+                    'embed_types'      => $embedTypes,
+                    'preloaded_js'     => $preloadedJs,
+                    'preloaded_css'    => $preloadedCss,
+                    'drop_library_css' => $dropLibraryCss,
+                    'semantics'        => $library['semantics'],
+                    'has_icon'         => $library['hasIcon'] ? 1 : 0,
+                ]);
             $this->deleteLibraryDependencies($library['libraryId']);
         }
 
@@ -704,7 +710,7 @@ class LaravelH5pRepository implements H5PFrameworkInterface
     /**
      * Implements getNumContent().
      */
-    public function getNumContent($library_id, $skip = NULL)
+    public function getNumContent($library_id, $skip = null)
     {
         return H5pContent::where('library_id', $library_id)->count();
     }
