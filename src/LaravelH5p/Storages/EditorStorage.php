@@ -39,12 +39,14 @@ class EditorStorage implements H5peditorStorage
     {
 //        $language = 'ja';
         // Load translation field from DB
-        $return = DB::select('SELECT hlt.translation FROM h5p_libraries_languages hlt
+        $return = DB::select(
+            'SELECT hlt.translation FROM h5p_libraries_languages hlt
            JOIN h5p_libraries hl ON hl.id = hlt.library_id
           WHERE hl.name = ?
             AND hl.major_version = ?
             AND hl.minor_version = ?
-            AND hlt.language_code = ?', [$machineName, $majorVersion, $minorVersion, $language]
+            AND hlt.language_code = ?',
+            [$machineName, $majorVersion, $minorVersion, $language]
         );
 
         return $return ? $return[0]->translation : null;

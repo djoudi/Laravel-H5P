@@ -379,7 +379,8 @@ class LaravelH5p
 
         // Get preloaded user data for the current user
         if (config('laravel-h5p.h5p_save_content_state') && Auth::check()) {
-            $results = DB::select('
+            $results = DB::select(
+                '
                 SELECT
                 hcud.sub_content_id,
                 hcud.data_id,
@@ -387,7 +388,8 @@ class LaravelH5p
                 FROM h5p_contents_user_data hcud
                 WHERE user_id = ?
                 AND content_id = ?
-                AND preload = 1', [Auth::user()->id, $content['id']]
+                AND preload = 1',
+                [Auth::user()->id, $content['id']]
             );
 
             if ($results) {
