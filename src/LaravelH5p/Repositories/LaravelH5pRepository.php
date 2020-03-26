@@ -302,11 +302,12 @@ class LaravelH5pRepository implements H5PFrameworkInterface
 
         if (isset($library['language'])) {
             foreach ($library['language'] as $languageCode => $translation) {
-                DB::table('h5p_libraries_languages')->insert([
-                    'library_id'    => $library['libraryId'],
-                    'language_code' => $languageCode,
-                    'translation'   => $translation,
-                ]
+                DB::table('h5p_libraries_languages')->insert(
+                    [
+                        'library_id'    => $library['libraryId'],
+                        'language_code' => $languageCode,
+                        'translation'   => $translation,
+                    ]
                 );
             }
         }
@@ -899,7 +900,8 @@ class LaravelH5pRepository implements H5PFrameworkInterface
                 [
                     'library_id' => isset($library['id']) ? $library['id'] : $library['libraryId'],
                     'hash'       => $key,
-                ]);
+                ]
+            );
         }
     }
 
@@ -989,7 +991,8 @@ class LaravelH5pRepository implements H5PFrameworkInterface
 
         foreach ($contentTypeCache->contentTypes as $ct) {
             // Insert into db
-            DB::insert('INSERT INTO h5p_libraries_hub_cache (
+            DB::insert(
+                'INSERT INTO h5p_libraries_hub_cache (
                 machine_name,
                 major_version,
                 minor_version,
@@ -1010,28 +1013,29 @@ class LaravelH5pRepository implements H5PFrameworkInterface
                 tutorial,
                 keywords,
                 categories,
-                owner) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
-                $ct->id,
-                $ct->version->major,
-                $ct->version->minor,
-                $ct->version->patch,
-                $ct->coreApiVersionNeeded->major,
-                $ct->coreApiVersionNeeded->minor,
-                $ct->title,
-                $ct->summary,
-                $ct->description,
-                $ct->icon,
-                (new DateTime($ct->createdAt))->getTimestamp(),
-                (new DateTime($ct->updatedAt))->getTimestamp(),
-                $ct->isRecommended === true ? 1 : 0,
-                $ct->popularity,
-                json_encode($ct->screenshots),
-                json_encode(isset($ct->license) ? $ct->license : []),
-                $ct->example,
-                isset($ct->tutorial) ? $ct->tutorial : '',
-                json_encode(isset($ct->keywords) ? $ct->keywords : []),
-                json_encode(isset($ct->categories) ? $ct->categories : []),
-                $ct->owner, ]
+                owner) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                [
+                    $ct->id,
+                    $ct->version->major,
+                    $ct->version->minor,
+                    $ct->version->patch,
+                    $ct->coreApiVersionNeeded->major,
+                    $ct->coreApiVersionNeeded->minor,
+                    $ct->title,
+                    $ct->summary,
+                    $ct->description,
+                    $ct->icon,
+                    (new DateTime($ct->createdAt))->getTimestamp(),
+                    (new DateTime($ct->updatedAt))->getTimestamp(),
+                    $ct->isRecommended === true ? 1 : 0,
+                    $ct->popularity,
+                    json_encode($ct->screenshots),
+                    json_encode(isset($ct->license) ? $ct->license : []),
+                    $ct->example,
+                    isset($ct->tutorial) ? $ct->tutorial : '',
+                    json_encode(isset($ct->keywords) ? $ct->keywords : []),
+                    json_encode(isset($ct->categories) ? $ct->categories : []),
+                    $ct->owner, ]
             );
         }
     }

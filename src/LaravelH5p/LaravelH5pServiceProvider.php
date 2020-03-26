@@ -61,7 +61,8 @@ class LaravelH5pServiceProvider extends \Illuminate\Support\ServiceProvider
             __DIR__.'/../../config/laravel-h5p.php' => config_path('laravel-h5p.php'),
         ], 'config');
         $this->mergeConfigFrom(
-            __DIR__.'/../../config/laravel-h5p.php', 'laravel-h5p'
+            __DIR__.'/../../config/laravel-h5p.php',
+            'laravel-h5p'
         );
 
         // language

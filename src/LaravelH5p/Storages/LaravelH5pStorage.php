@@ -236,13 +236,16 @@ class LaravelH5pStorage implements H5PFileStorage
                 } else {
                     // Rewrite relative URLs used inside stylesheets
                     $content .= preg_replace_callback(
-                        '/url\([\'"]?([^"\')]+)[\'"]?\)/i', function ($matches) use ($cssRelPath) {
+                        '/url\([\'"]?([^"\')]+)[\'"]?\)/i',
+                        function ($matches) use ($cssRelPath) {
                             if (preg_match("/^(data:|([a-z0-9]+:)?\/)/i", $matches[1]) === 1) {
                                 return $matches[0]; // Not relative, skip
                             }
 
                             return 'url("../'.$cssRelPath.$matches[1].'")';
-                        }, $assetContent)."\n";
+                        },
+                        $assetContent
+                    )."\n";
                 }
             }
 
