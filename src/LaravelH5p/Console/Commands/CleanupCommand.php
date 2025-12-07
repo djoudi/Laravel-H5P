@@ -40,9 +40,10 @@ class CleanupCommand extends Command
     protected function cleanTempFiles(bool $dryRun): void
     {
         $tempPath = storage_path('app/public/h5p/temp');
-        
+
         if (!is_dir($tempPath)) {
             $this->info('No temporary files found.');
+
             return;
         }
 
@@ -51,6 +52,7 @@ class CleanupCommand extends Command
 
         if ($count === 0) {
             $this->info('No temporary files found.');
+
             return;
         }
 
@@ -65,7 +67,7 @@ class CleanupCommand extends Command
     protected function cleanUnusedLibraries(bool $dryRun): void
     {
         $this->info('Checking for unused libraries...');
-        
+
         // Get libraries with no content dependencies
         $unusedLibraries = H5pLibrary::whereDoesntHave('contents')
             ->where('runnable', 0)
@@ -75,15 +77,16 @@ class CleanupCommand extends Command
 
         if ($count === 0) {
             $this->info('No unused libraries found.');
+
             return;
         }
 
         $this->table(
             ['ID', 'Name', 'Version'],
-            $unusedLibraries->map(fn($lib) => [
+            $unusedLibraries->map(fn ($lib) => [
                 $lib->id,
                 $lib->name,
-                "{$lib->major_version}.{$lib->minor_version}.{$lib->patch_version}"
+                "{$lib->major_version}.{$lib->minor_version}.{$lib->patch_version}",
             ])
         );
 

@@ -24,9 +24,9 @@ class StatusCommand extends Command
 
         // Check tables
         $tables = [
-            'h5p_contents' => Schema::hasTable('h5p_contents'),
+            'h5p_contents'  => Schema::hasTable('h5p_contents'),
             'h5p_libraries' => Schema::hasTable('h5p_libraries'),
-            'h5p_results' => Schema::hasTable('h5p_results'),
+            'h5p_results'   => Schema::hasTable('h5p_results'),
         ];
 
         $this->info('📋 Database Tables:');
@@ -48,9 +48,9 @@ class StatusCommand extends Command
 
         // Check directories
         $directories = [
-            'Storage' => storage_path('app/public/h5p'),
+            'Storage'   => storage_path('app/public/h5p'),
             'Libraries' => storage_path('app/public/h5p/libraries'),
-            'Content' => storage_path('app/public/h5p/content'),
+            'Content'   => storage_path('app/public/h5p/content'),
         ];
 
         $this->info('📁 Directories:');
@@ -67,7 +67,7 @@ class StatusCommand extends Command
         $lrsStatus = $lrsEnabled ? '<info>Enabled</info>' : '<comment>Disabled</comment>';
         $this->line("   Status: {$lrsStatus}");
         if ($lrsEnabled) {
-            $this->line("   Endpoint: " . config('lrs.endpoint', 'Not configured'));
+            $this->line('   Endpoint: '.config('lrs.endpoint', 'Not configured'));
         }
         $this->newLine();
 

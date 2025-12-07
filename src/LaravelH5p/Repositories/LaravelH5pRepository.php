@@ -294,7 +294,7 @@ class LaravelH5pRepository implements H5PFrameworkInterface
         }
 
         // Log library successfully installed/upgraded
-        event(new H5pEvent('library', ($new ? 'create' : 'update'), null, null, $library['machineName'], $library['majorVersion'].'.'.$library['minorVersion']));
+        event(new H5pEvent('library', $new ? 'create' : 'update', null, null, $library['machineName'], $library['majorVersion'].'.'.$library['minorVersion']));
 
         // Update languages
         DB::table('h5p_libraries_languages')
@@ -303,11 +303,12 @@ class LaravelH5pRepository implements H5PFrameworkInterface
 
         if (isset($library['language'])) {
             foreach ($library['language'] as $languageCode => $translation) {
-                DB::table('h5p_libraries_languages')->insert([
-                    'library_id'    => $library['libraryId'],
-                    'language_code' => $languageCode,
-                    'translation'   => $translation,
-                ]
+                DB::table('h5p_libraries_languages')->insert(
+                    [
+                        'library_id'    => $library['libraryId'],
+                        'language_code' => $languageCode,
+                        'translation'   => $translation,
+                    ]
                 );
             }
         }
@@ -796,14 +797,14 @@ class LaravelH5pRepository implements H5PFrameworkInterface
                         $multipart[] = [
                             'name'     => $file['name'],
                             'contents' => fopen($file['path'], 'r'),
-                            'filename' => $file['originalName'] ?? basename($file['path'])
+                            'filename' => $file['originalName'] ?? basename($file['path']),
                         ];
                     }
                     $options['multipart'] = $multipart;
                 } elseif ($data !== null) {
                     $options['form_params'] = $data;
                 }
-                
+
                 $response = $client->request($method, $url, $options);
             } else {
                 // Get
@@ -817,22 +818,22 @@ class LaravelH5pRepository implements H5PFrameworkInterface
             }
 
             if ($response->getStatusCode() === 200) {
-                 if ($fullData) {
+                if ($fullData) {
                     return [
                         'status' => $response->getStatusCode(),
                         'data'   => (string) $response->getBody(),
                     ];
                 }
+
                 return empty($response->getBody()) ? true : (string) $response->getBody();
             }
         } catch (\Exception $e) {
             // Log::error($e->getMessage());
             return false;
         }
-        
+
         return false;
     }
-
 
     /**
      * Implements setLibraryTutorialUrl.
@@ -847,7 +848,6 @@ class LaravelH5pRepository implements H5PFrameworkInterface
      */
     public function resetContentUserData($contentId)
     {
-
         // Reset user datas for this content
         DB::table('h5p_contents_user_data')
             ->where('content_id', $contentId)
@@ -927,7 +927,8 @@ class LaravelH5pRepository implements H5PFrameworkInterface
                 [
                     'library_id' => isset($library['id']) ? $library['id'] : $library['libraryId'],
                     'hash'       => $key,
-                ]);
+                ]
+            );
         }
     }
 
@@ -936,7 +937,6 @@ class LaravelH5pRepository implements H5PFrameworkInterface
      */
     public function deleteCachedAssets($library_id)
     {
-
         // Get all the keys so we can remove the files
         $results = DB::select('SELECT hash FROM h5p_libraries_cachedassets WHERE library_id = ?', [$library_id]);
         // Remove all invalid keys
@@ -988,17 +988,17 @@ class LaravelH5pRepository implements H5PFrameworkInterface
     public function hasPermission($permission, $contentUserId = null)
     {
         switch ($permission) {
-        case H5PPermission::DOWNLOAD_H5P:
-        case H5PPermission::EMBED_H5P:
+            case H5PPermission::DOWNLOAD_H5P:
+            case H5PPermission::EMBED_H5P:
 //                return self::currentUserCanEdit($contentUserId);
-            return true;
-        case H5PPermission::CREATE_RESTRICTED:
-        case H5PPermission::UPDATE_LIBRARIES:
+                return true;
+            case H5PPermission::CREATE_RESTRICTED:
+            case H5PPermission::UPDATE_LIBRARIES:
 //                return H5pHelper::current_user_can('manage_h5p_libraries');
-            return true;
-        case H5PPermission::INSTALL_RECOMMENDED:
+                return true;
+            case H5PPermission::INSTALL_RECOMMENDED:
 //                H5pHelper::current_user_can('install_recommended_h5p_libraries');
-            return true;
+                return true;
         }
 
         return false;
@@ -1017,7 +1017,8 @@ class LaravelH5pRepository implements H5PFrameworkInterface
 
         foreach ($contentTypeCache->contentTypes as $ct) {
             // Insert into db
-            DB::insert('INSERT INTO h5p_libraries_hub_cache (
+            DB::insert(
+                'INSERT INTO h5p_libraries_hub_cache (
                 machine_name,
                 major_version,
                 minor_version,
@@ -1038,28 +1039,29 @@ class LaravelH5pRepository implements H5PFrameworkInterface
                 tutorial,
                 keywords,
                 categories,
-                owner) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
-                $ct->id,
-                $ct->version->major,
-                $ct->version->minor,
-                $ct->version->patch,
-                $ct->coreApiVersionNeeded->major,
-                $ct->coreApiVersionNeeded->minor,
-                $ct->title,
-                $ct->summary,
-                $ct->description,
-                $ct->icon,
-                (new \DateTime($ct->createdAt))->getTimestamp(),
-                (new \DateTime($ct->updatedAt))->getTimestamp(),
-                $ct->isRecommended === true ? 1 : 0,
-                $ct->popularity,
-                json_encode($ct->screenshots),
-                json_encode(isset($ct->license) ? $ct->license : []),
-                $ct->example,
-                isset($ct->tutorial) ? $ct->tutorial : '',
-                json_encode(isset($ct->keywords) ? $ct->keywords : []),
-                json_encode(isset($ct->categories) ? $ct->categories : []),
-                $ct->owner, ]
+                owner) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                [
+                    $ct->id,
+                    $ct->version->major,
+                    $ct->version->minor,
+                    $ct->version->patch,
+                    $ct->coreApiVersionNeeded->major,
+                    $ct->coreApiVersionNeeded->minor,
+                    $ct->title,
+                    $ct->summary,
+                    $ct->description,
+                    $ct->icon,
+                    (new \DateTime($ct->createdAt))->getTimestamp(),
+                    (new \DateTime($ct->updatedAt))->getTimestamp(),
+                    $ct->isRecommended === true ? 1 : 0,
+                    $ct->popularity,
+                    json_encode($ct->screenshots),
+                    json_encode(isset($ct->license) ? $ct->license : []),
+                    $ct->example,
+                    isset($ct->tutorial) ? $ct->tutorial : '',
+                    json_encode(isset($ct->keywords) ? $ct->keywords : []),
+                    json_encode(isset($ct->categories) ? $ct->categories : []),
+                    $ct->owner, ]
             );
         }
     }
@@ -1080,40 +1082,41 @@ class LaravelH5pRepository implements H5PFrameworkInterface
         $results = DB::table('h5p_libraries_hub_cache')->get();
         $cache = [];
         foreach ($results as $item) {
-             $cache[] = (object) [
-                 'id' => $item->machine_name,
-                 'machineName' => $item->machine_name,
-                 'title' => $item->title,
-                 'majorVersion' => $item->major_version,
-                 'minorVersion' => $item->minor_version,
-                 'patchVersion' => $item->patch_version,
-                 'h5pMajorVersion' => $item->h5p_major_version,
-                 'h5pMinorVersion' => $item->h5p_minor_version,
-                 'summary' => $item->summary,
-                 'description' => $item->description,
-                 'icon' => $item->icon,
-                 'createdAt' => $item->created_at,
-                 'updatedAt' => $item->updated_at,
-                 'isRecommended' => (bool)$item->is_recommended,
-                 'popularity' => $item->popularity,
-                 'screenshots' => json_decode($item->screenshots),
-                 'license' => json_decode($item->license),
-                 'example' => $item->example,
-                 'tutorial' => $item->tutorial,
-                 'keywords' => json_decode($item->keywords),
-                 'categories' => json_decode($item->categories),
-                 'owner' => $item->owner,
-                 'version' => (object)[
-                      'major' => $item->major_version,
-                      'minor' => $item->minor_version,
-                      'patch' => $item->patch_version,
-                 ],
-                 'coreApiVersionNeeded' => (object)[
-                      'major' => $item->h5p_major_version,
-                      'minor' => $item->h5p_minor_version,
-                 ]
-             ];
+            $cache[] = (object) [
+                'id'              => $item->machine_name,
+                'machineName'     => $item->machine_name,
+                'title'           => $item->title,
+                'majorVersion'    => $item->major_version,
+                'minorVersion'    => $item->minor_version,
+                'patchVersion'    => $item->patch_version,
+                'h5pMajorVersion' => $item->h5p_major_version,
+                'h5pMinorVersion' => $item->h5p_minor_version,
+                'summary'         => $item->summary,
+                'description'     => $item->description,
+                'icon'            => $item->icon,
+                'createdAt'       => $item->created_at,
+                'updatedAt'       => $item->updated_at,
+                'isRecommended'   => (bool) $item->is_recommended,
+                'popularity'      => $item->popularity,
+                'screenshots'     => json_decode($item->screenshots),
+                'license'         => json_decode($item->license),
+                'example'         => $item->example,
+                'tutorial'        => $item->tutorial,
+                'keywords'        => json_decode($item->keywords),
+                'categories'      => json_decode($item->categories),
+                'owner'           => $item->owner,
+                'version'         => (object) [
+                    'major' => $item->major_version,
+                    'minor' => $item->minor_version,
+                    'patch' => $item->patch_version,
+                ],
+                'coreApiVersionNeeded' => (object) [
+                    'major' => $item->h5p_major_version,
+                    'minor' => $item->h5p_minor_version,
+                ],
+            ];
         }
+
         return $cache;
     }
 
@@ -1131,6 +1134,7 @@ class LaravelH5pRepository implements H5PFrameworkInterface
     public function setContentHubMetadataChecked($time, $lang = 'en')
     {
         \Illuminate\Support\Facades\Cache::put('h5p_content_hub_metadata_checked_'.$lang, $time);
+
         return true;
     }
 }

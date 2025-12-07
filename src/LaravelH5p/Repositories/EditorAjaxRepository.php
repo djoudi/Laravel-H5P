@@ -105,7 +105,6 @@ class EditorAjaxRepository implements H5PEditorAjaxInterface
         }
 
         return $recently_used;
-
     }
 
     public function validateEditorToken($token)

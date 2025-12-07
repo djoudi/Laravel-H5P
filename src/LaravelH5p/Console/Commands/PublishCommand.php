@@ -22,7 +22,7 @@ class PublishCommand extends Command
         if ($this->option('config') || (!$this->option('assets') && !$this->option('views'))) {
             $this->info('Publishing configuration...');
             $this->call('vendor:publish', [
-                '--tag' => 'laravel-h5p-config',
+                '--tag'   => 'laravel-h5p-config',
                 '--force' => $force,
             ]);
             $publishedSomething = true;
@@ -31,7 +31,7 @@ class PublishCommand extends Command
         if ($this->option('assets') || (!$this->option('config') && !$this->option('views'))) {
             $this->info('Publishing assets...');
             $this->call('vendor:publish', [
-                '--tag' => 'laravel-h5p-assets',
+                '--tag'   => 'laravel-h5p-assets',
                 '--force' => $force,
             ]);
             $publishedSomething = true;
@@ -40,7 +40,7 @@ class PublishCommand extends Command
         if ($this->option('views')) {
             $this->info('Publishing views...');
             $this->call('vendor:publish', [
-                '--tag' => 'laravel-h5p-views',
+                '--tag'   => 'laravel-h5p-views',
                 '--force' => $force,
             ]);
             $publishedSomething = true;

@@ -4,9 +4,9 @@ namespace Djoudi\LaravelH5p;
 
 use Djoudi\LaravelH5p\Commands\MigrationCommand;
 use Djoudi\LaravelH5p\Commands\ResetCommand;
+use Djoudi\LaravelH5p\Console\Commands\CleanupCommand;
 use Djoudi\LaravelH5p\Console\Commands\InstallCommand;
 use Djoudi\LaravelH5p\Console\Commands\PublishCommand;
-use Djoudi\LaravelH5p\Console\Commands\CleanupCommand;
 use Djoudi\LaravelH5p\Console\Commands\StatusCommand;
 use Djoudi\LaravelH5p\Helpers\H5pHelper;
 use Illuminate\Support\ServiceProvider;
@@ -55,9 +55,10 @@ class LaravelH5pServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../config/laravel-h5p.php' => config_path('laravel-h5p.php'),
         ], 'laravel-h5p-config');
-        
+
         $this->mergeConfigFrom(
-            __DIR__.'/../../config/laravel-h5p.php', 'laravel-h5p'
+            __DIR__.'/../../config/laravel-h5p.php',
+            'laravel-h5p'
         );
 
         // language files
@@ -81,17 +82,17 @@ class LaravelH5pServiceProvider extends ServiceProvider
 
         // h5p assets
         $this->publishes([
-            __DIR__.'/../../assets' => public_path('assets/vendor/laravel-h5p'),
-            base_path('vendor/h5p/h5p-core/fonts') => public_path('assets/vendor/h5p/h5p-core/fonts'),
-            base_path('vendor/h5p/h5p-core/images') => public_path('assets/vendor/h5p/h5p-core/images'),
-            base_path('vendor/h5p/h5p-core/js') => public_path('assets/vendor/h5p/h5p-core/js'),
-            base_path('vendor/h5p/h5p-core/styles') => public_path('assets/vendor/h5p/h5p-core/styles'),
+            __DIR__.'/../../assets'                     => public_path('assets/vendor/laravel-h5p'),
+            base_path('vendor/h5p/h5p-core/fonts')      => public_path('assets/vendor/h5p/h5p-core/fonts'),
+            base_path('vendor/h5p/h5p-core/images')     => public_path('assets/vendor/h5p/h5p-core/images'),
+            base_path('vendor/h5p/h5p-core/js')         => public_path('assets/vendor/h5p/h5p-core/js'),
+            base_path('vendor/h5p/h5p-core/styles')     => public_path('assets/vendor/h5p/h5p-core/styles'),
             base_path('vendor/h5p/h5p-editor/ckeditor') => public_path('assets/vendor/h5p/h5p-editor/ckeditor'),
-            base_path('vendor/h5p/h5p-editor/images') => public_path('assets/vendor/h5p/h5p-editor/images'),
+            base_path('vendor/h5p/h5p-editor/images')   => public_path('assets/vendor/h5p/h5p-editor/images'),
             base_path('vendor/h5p/h5p-editor/language') => public_path('assets/vendor/h5p/h5p-editor/language'),
-            base_path('vendor/h5p/h5p-editor/libs') => public_path('assets/vendor/h5p/h5p-editor/libs'),
-            base_path('vendor/h5p/h5p-editor/scripts') => public_path('assets/vendor/h5p/h5p-editor/scripts'),
-            base_path('vendor/h5p/h5p-editor/styles') => public_path('assets/vendor/h5p/h5p-editor/styles'),
+            base_path('vendor/h5p/h5p-editor/libs')     => public_path('assets/vendor/h5p/h5p-editor/libs'),
+            base_path('vendor/h5p/h5p-editor/scripts')  => public_path('assets/vendor/h5p/h5p-editor/scripts'),
+            base_path('vendor/h5p/h5p-editor/styles')   => public_path('assets/vendor/h5p/h5p-editor/styles'),
         ], 'laravel-h5p-assets');
     }
 }

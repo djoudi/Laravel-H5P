@@ -44,6 +44,7 @@ class H5pContent extends Model
     {
         return (object) DB::table('users')->where('id', $this->user_id)->first();
     }
+
     public function results()
     {
         return $this->hasMany(H5pResult::class, 'content_id');

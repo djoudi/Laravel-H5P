@@ -3,12 +3,12 @@
 namespace Djoudi\LaravelH5p\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use Djoudi\LaravelH5p\Eloquents\H5pContent;
 use Djoudi\LaravelH5p\Eloquents\H5pLibrary;
 use H5PCore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class LibraryController extends Controller
@@ -127,33 +127,34 @@ class LibraryController extends Controller
             $skipContent = true;
             $h5p_upgrade_only = ($request->get('h5p_upgrade_only')) ? true : false;
 
-
-
             try {
                 rename($request->file('h5p_file')->getPathName(), $interface->getUploadedH5pPath());
                 if ($validator->isValidPackage($skipContent, $h5p_upgrade_only)) {
                     $storage = $h5p::$storage;
                     $storage->savePackage($content, null, $skipContent);
                     Log::info('All is OK ');
-                    
+
                     @unlink($interface->getUploadedH5pPath());
+
                     return redirect()
                         ->route('h5p.library.index')
                         ->with('success', trans('laravel-h5p.library.updated'));
                 } else {
                     Log::error('H5P Validation failed');
                     @unlink($interface->getUploadedH5pPath());
+
                     return redirect()
                         ->route('h5p.library.index')
                         ->with('error', 'H5P Package Validation Failed');
                 }
             } catch (\Exception $e) {
-                Log::error('H5P Error: ' . $e->getMessage());
+                Log::error('H5P Error: '.$e->getMessage());
                 Log::error($e->getTraceAsString());
                 @unlink($interface->getUploadedH5pPath());
-                 return redirect()
-                    ->route('h5p.library.index')
-                    ->with('error', 'Error: ' . $e->getMessage());
+
+                return redirect()
+                   ->route('h5p.library.index')
+                   ->with('error', 'Error: '.$e->getMessage());
             }
         }
 
@@ -229,7 +230,7 @@ class LibraryController extends Controller
 
     private function assets($scripts = [], $styles = [])
     {
-        $prefix = url('assets/vendor/h5p/h5p-core') . '/';
+        $prefix = url('assets/vendor/h5p/h5p-core').'/';
         $return = [
             'scripts' => [],
             'styles'  => [],
@@ -289,34 +290,34 @@ class LibraryController extends Controller
     public function display_libraries_page()
     {
         switch (filter_input(INPUT_GET, 'task', FILTER_SANITIZE_STRING)) {
-        case null:
-            $this->display_libraries();
+            case null:
+                $this->display_libraries();
 
-            return;
-        case 'show':
-            $this->display_library_details();
+                return;
+            case 'show':
+                $this->display_library_details();
 
-            return;
-        case 'delete':
-            $library = $this->get_library();
-            H5P_Plugin_Admin::print_messages();
-            if ($library) {
-                include_once 'views/library-delete.php';
-            }
+                return;
+            case 'delete':
+                $library = $this->get_library();
+                H5P_Plugin_Admin::print_messages();
+                if ($library) {
+                    include_once 'views/library-delete.php';
+                }
 
-            return;
-        case 'upgrade':
-            $library = $this->get_library();
-            if ($library) {
-                $settings = $this->display_content_upgrades($library);
-            }
-            include_once 'views/library-content-upgrade.php';
-            if (isset($settings)) {
-                $h5p = H5P_Plugin::get_instance();
-                $h5p->print_settings($settings, 'H5PAdminIntegration');
-            }
+                return;
+            case 'upgrade':
+                $library = $this->get_library();
+                if ($library) {
+                    $settings = $this->display_content_upgrades($library);
+                }
+                include_once 'views/library-content-upgrade.php';
+                if (isset($settings)) {
+                    $h5p = H5P_Plugin::get_instance();
+                    $h5p->print_settings($settings, 'H5PAdminIntegration');
+                }
 
-            return;
+                return;
         }
         echo '<div class="wrap"><h2>'.esc_html__('Unknown task.').'</h2></div>';
     }

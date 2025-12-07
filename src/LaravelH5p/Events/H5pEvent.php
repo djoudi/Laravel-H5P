@@ -41,8 +41,7 @@ class H5pEvent extends H5PEventBase
      */
     protected function save()
     {
-
-                // Get data in array format without NULL values
+        // Get data in array format without NULL values
         $data = $this->getDataArray();
         $data['user_id'] = Auth::id();
 

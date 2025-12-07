@@ -23,27 +23,30 @@ class InstallCommand extends Command
         // Step 1: Publish config
         $this->task('Publishing configuration files', function () {
             $this->callSilently('vendor:publish', [
-                '--tag' => 'laravel-h5p-config',
+                '--tag'   => 'laravel-h5p-config',
                 '--force' => $this->option('force'),
             ]);
+
             return true;
         });
 
         // Step 2: Publish migrations
         $this->task('Publishing migrations', function () {
             $this->callSilently('vendor:publish', [
-                '--tag' => 'laravel-h5p-migrations',
+                '--tag'   => 'laravel-h5p-migrations',
                 '--force' => $this->option('force'),
             ]);
+
             return true;
         });
 
         // Step 3: Publish assets
         $this->task('Publishing assets', function () {
             $this->callSilently('vendor:publish', [
-                '--tag' => 'laravel-h5p-assets',
+                '--tag'   => 'laravel-h5p-assets',
                 '--force' => $this->option('force'),
             ]);
+
             return true;
         });
 
@@ -51,6 +54,7 @@ class InstallCommand extends Command
         if (!$this->option('skip-migrations')) {
             $this->task('Running migrations', function () {
                 $this->callSilently('migrate');
+
                 return true;
             });
         }
@@ -69,6 +73,7 @@ class InstallCommand extends Command
                     mkdir($dir, 0755, true);
                 }
             }
+
             return true;
         });
 
@@ -77,13 +82,14 @@ class InstallCommand extends Command
             if (!file_exists(public_path('storage'))) {
                 $this->callSilently('storage:link');
             }
+
             return true;
         });
 
         $this->newLine();
         $this->info('✅ H5P has been installed successfully!');
         $this->newLine();
-        
+
         $this->table(['Next Steps'], [
             ['1. Configure your .env file with H5P settings'],
             ['2. Visit /h5p/library to manage H5P libraries'],
@@ -104,13 +110,13 @@ class InstallCommand extends Command
     protected function task(string $description, callable $task): void
     {
         $this->output->write("  <comment>→</comment> {$description}... ");
-        
+
         try {
             $result = $task();
             $this->output->writeln($result ? '<info>✓</info>' : '<error>✗</error>');
         } catch (\Exception $e) {
             $this->output->writeln('<error>✗</error>');
-            $this->error("    Error: " . $e->getMessage());
+            $this->error('    Error: '.$e->getMessage());
         }
     }
 }
