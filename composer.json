@@ -18,7 +18,7 @@
     },
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^12.0",
+        "laravel/framework": "^12.0|^13.0",
         "h5p/h5p-core": "^1.24",
         "h5p/h5p-editor": "^1.24",
         "guzzlehttp/guzzle": "^7.0"
